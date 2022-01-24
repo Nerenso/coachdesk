@@ -7,28 +7,29 @@
       <div class="w-full xl:w-4/12 p-5 xl:p-16 2xl:px-24">
         <img src="../assets/CoachDeskLogo.svg" class="" />
         <div class="mx-auto h-full flex flex-col justify-center py-32 md:px-32 xl:px-0 max-w-screen-sm pt-10">
-          <NCard class="" title="Login" size="medium">
+          <NCard class="" title="Registreren" size="medium">
             <NForm ref="formRef" :model="formModel" :rules="rules" size="large">
               <NFormItem label="Email" path="user.email">
-                <NInput class="" size="large" v-model:value="formModel.user.email" placeholder="Your Email" />
+                <NInput class="" size="large" v-model:value="formModel.user.email" placeholder="john@coachinglife.nl" />
               </NFormItem>
               <NFormItem label="Wachtwoord" path="user.password">
-                <NInput class="" size="large" type="password" v-model:value="formModel.user.password" placeholder="Your Password" />
+                <NInput class="" size="large" type="password" v-model:value="formModel.user.password" placeholder="Jouw Wachtwoord" />
               </NFormItem>
-              <div class="flex justify-between items-center">
-                <NButton @click="handleLogin" class="my-5" type="primary" size="large">Inloggen</NButton>
-                <router-link :to="{ name: 'ForgotPassword' }"
-                  ><p class="text-gray-400 text-xs hover:text-red-500 transition-all duration-300">Wachtwoord Vergeten?</p></router-link
-                >
-              </div>
+              <NFormItem label="Wachtwoord Bevestigen" path="user.confirmPassword">
+                <NInput
+                  class=""
+                  size="large"
+                  type="password"
+                  v-model:value="formModel.user.confirmPassword"
+                  placeholder="Jouw Wachtwoord Bevestigen"
+                />
+              </NFormItem>
+              <NButton @click="handleLogin" class="my-5" type="primary" size="large">Registreren</NButton>
             </NForm>
           </NCard>
           <div class="text-center mt-12">
             <p>
-              Heb je nog geen account?
-              <router-link :to="{ name: 'Register' }"
-                ><span class="text-red-500 font-bold hover:text-red-700 transition-all duration-300">Registreren</span></router-link
-              >
+              Heb je al een account? <router-link :to="{ name: 'Login' }"><span class="text-red-500 font-bold">Inloggen</span></router-link>
             </p>
           </div>
         </div>
@@ -42,7 +43,7 @@ import { NCard, NInput, NForm, NFormItem, NButton } from "naive-ui";
 import { useAuthStore } from "../store/authStore";
 import { ref } from "@vue/reactivity";
 export default {
-  name: "Login",
+  name: "Register",
   components: {
     NCard,
     NInput,
@@ -57,6 +58,7 @@ export default {
       user: {
         email: "",
         password: "",
+        confirmPassword: "",
       },
     });
 
@@ -80,6 +82,18 @@ export default {
             validator(rule, value) {
               if (value.length < 6) {
                 return new Error("Je wachtwoord moet minimaal uit 6 characters bestaan");
+              }
+              return true;
+            },
+            trigger: ["input", "blur"],
+          },
+        ],
+        confirmPassword: [
+          {
+            required: true,
+            validator(rule, value) {
+              if (value !== formModel.value.user.password) {
+                return new Error("Wachtwoorden komen niet overeen met elkaar");
               }
               return true;
             },
