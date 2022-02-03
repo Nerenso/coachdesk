@@ -1,16 +1,47 @@
 <template>
   <n-config-provider :theme-overrides="themeOverrides">
-    <router-view />
+    <n-message-provider>
+      <div v-if="appReady">
+        <router-view />
+      </div>
+    </n-message-provider>
   </n-config-provider>
 </template>
 
 <script>
-import { NConfigProvider } from "naive-ui";
+import { NConfigProvider, NMessageProvider } from "naive-ui";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "./store/authStore";
+import { supabase } from "./supabase/supabase";
+import { ref, watchEffect } from "vue-demi";
 
 export default {
-  components: { NConfigProvider },
+  components: { NConfigProvider, NMessageProvider },
   setup() {
+    const appReady = ref(false);
+    const router = useRouter();
+    const user = supabase.auth.user();
+    const authStore = useAuthStore();
+
+    if (!user) {
+      appReady.value = true;
+    }
+
+    supabase.auth.onAuthStateChange((event, session) => {
+      authStore.setUser(session);
+      authStore.setAuthEventType(event);
+      console.log(event);
+      appReady.value = true;
+    });
+
+    watchEffect(() => {
+      if (authStore.authEventType === "PASSWORD_RECOVERY") {
+        router.push({ name: "NewPassword" });
+      }
+    });
+
     return {
+      appReady,
       themeOverrides: {
         common: {
           primaryColor: "#FE6078",

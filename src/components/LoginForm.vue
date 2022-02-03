@@ -1,39 +1,27 @@
 <template>
-  <div class="min-h-screen flex flex-col">
-    <div class="relative flex flex-grow">
-      <div class="xl:w-8/12 hidden xl:block p-20 bg-gray-100">
-        <img src="../assets/login.svg" class="object-contain h-full mx-auto p-5 w-4/5" />
+  <NCard class="" title="Login" size="medium">
+    <NForm ref="formRef" :model="formModel" :rules="rules" size="large">
+      <NFormItem label="Email" path="user.email">
+        <NInput class="" size="large" v-model:value="formModel.user.email" placeholder="Your Email" />
+      </NFormItem>
+      <NFormItem label="Wachtwoord" path="user.password">
+        <NInput class="" size="large" type="password" v-model:value="formModel.user.password" placeholder="Your Password" />
+      </NFormItem>
+      <div class="flex justify-between items-center">
+        <NButton @click="handleLogin" class="my-5" type="primary" size="large">Inloggen</NButton>
+        <router-link :to="{ name: 'ForgotPassword' }"
+          ><p class="text-gray-400 text-xs hover:text-red-500 transition-all duration-300">Wachtwoord Vergeten?</p></router-link
+        >
       </div>
-      <div class="w-full xl:w-4/12 p-5 xl:p-16 2xl:px-24">
-        <img src="../assets/CoachDeskLogo.svg" class="" />
-        <div class="mx-auto h-full flex flex-col justify-center py-32 md:px-32 xl:px-0 max-w-screen-sm pt-10">
-          <NCard class="" title="Login" size="medium">
-            <NForm ref="formRef" :model="formModel" :rules="rules" size="large">
-              <NFormItem label="Email" path="user.email">
-                <NInput class="" size="large" v-model:value="formModel.user.email" placeholder="Your Email" />
-              </NFormItem>
-              <NFormItem label="Wachtwoord" path="user.password">
-                <NInput class="" size="large" type="password" v-model:value="formModel.user.password" placeholder="Your Password" />
-              </NFormItem>
-              <div class="flex justify-between items-center">
-                <NButton @click="handleLogin" class="my-5" type="primary" size="large">Inloggen</NButton>
-                <router-link :to="{ name: 'ForgotPassword' }"
-                  ><p class="text-gray-400 text-xs hover:text-red-500 transition-all duration-300">Wachtwoord Vergeten?</p></router-link
-                >
-              </div>
-            </NForm>
-          </NCard>
-          <div class="text-center mt-12">
-            <p>
-              Heb je nog geen account?
-              <router-link :to="{ name: 'Register' }"
-                ><span class="text-red-500 font-bold hover:text-red-700 transition-all duration-300">Registreren</span></router-link
-              >
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+    </NForm>
+  </NCard>
+  <div class="text-center mt-12">
+    <p>
+      Heb je nog geen account?
+      <router-link :to="{ name: 'Register' }"
+        ><span class="text-red-500 font-bold hover:text-red-700 transition-all duration-300">Registreren</span></router-link
+      >
+    </p>
   </div>
 </template>
 
