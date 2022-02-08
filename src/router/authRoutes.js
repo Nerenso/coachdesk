@@ -2,6 +2,7 @@ import LoginForm from "../components/LoginForm.vue";
 import RegistrationForm from "../components/RegistrationForm.vue";
 import ForgotPasswordForm from "../components/ForgotPasswordForm.vue";
 import NewPasswordForm from "../components/NewPasswordForm.vue";
+import RegistrationSuccess from "../components/RegistrationSuccess.vue";
 
 export const authRoutes = [
   {
@@ -27,5 +28,10 @@ export const authRoutes = [
     path: "newpassword",
     name: "NewPassword",
     component: NewPasswordForm,
+  },
+  {
+    path: "success",
+    name: "Success",
+    component: RegistrationSuccess,
   },
 ];

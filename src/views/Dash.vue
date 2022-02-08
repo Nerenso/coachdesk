@@ -58,7 +58,11 @@
 
       <!-- Router View -->
       <div class="w-full bg-gray-100 mt-16">
-        <router-view />
+        <router-view v-slot="{ Component }">
+          <XyzTransition appear xyz="fade down-1 duration-3" mode="out-in">
+            <component :is="Component" />
+          </XyzTransition>
+        </router-view>
       </div>
     </div>
   </div>

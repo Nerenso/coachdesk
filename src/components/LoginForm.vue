@@ -1,27 +1,29 @@
 <template>
-  <NCard class="" title="Login" size="medium">
-    <NForm ref="formRef" :model="formModel" :rules="rules" size="large">
-      <NFormItem label="Email" path="user.email">
-        <NInput class="" size="large" v-model:value="formModel.user.email" placeholder="Your Email" />
-      </NFormItem>
-      <NFormItem label="Wachtwoord" path="user.password">
-        <NInput class="" size="large" type="password" v-model:value="formModel.user.password" placeholder="Your Password" />
-      </NFormItem>
-      <div class="flex justify-between items-center">
-        <NButton @click="handleLogin" class="my-5" type="primary" size="large">Inloggen</NButton>
-        <router-link :to="{ name: 'ForgotPassword' }"
-          ><p class="text-gray-400 text-xs hover:text-red-500 transition-all duration-300">Wachtwoord Vergeten?</p></router-link
+  <div>
+    <NCard class="" title="Login" size="medium">
+      <NForm ref="formRef" :model="formModel" :rules="rules" size="large">
+        <NFormItem label="Email" path="user.email">
+          <NInput class="" size="large" v-model:value="formModel.user.email" placeholder="Your Email" />
+        </NFormItem>
+        <NFormItem label="Wachtwoord" path="user.password">
+          <NInput class="" size="large" type="password" v-model:value="formModel.user.password" placeholder="Your Password" />
+        </NFormItem>
+        <div class="flex justify-between items-center">
+          <NButton @click="handleLogin" class="my-5" type="primary" size="large">Inloggen</NButton>
+          <router-link :to="{ name: 'ForgotPassword' }"
+            ><p class="text-gray-400 text-xs hover:text-red-500 transition-all duration-300">Wachtwoord Vergeten?</p></router-link
+          >
+        </div>
+      </NForm>
+    </NCard>
+    <div class="text-center mt-12">
+      <p>
+        Heb je nog geen account?
+        <router-link :to="{ name: 'Register' }"
+          ><span class="text-red-500 font-bold hover:text-red-700 transition-all duration-300">Registreren</span></router-link
         >
-      </div>
-    </NForm>
-  </NCard>
-  <div class="text-center mt-12">
-    <p>
-      Heb je nog geen account?
-      <router-link :to="{ name: 'Register' }"
-        ><span class="text-red-500 font-bold hover:text-red-700 transition-all duration-300">Registreren</span></router-link
-      >
-    </p>
+      </p>
+    </div>
   </div>
 </template>
 

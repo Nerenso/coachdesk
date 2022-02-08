@@ -1,16 +1,20 @@
 <template>
-  <BaseHeader headerIcon="InvoicesIcon" title="Facturen" subTitle="Bekijk alle gegenereerde facturen, wijzig je factuur sjabloon.">
-    <template v-if="selectedTab === 'factuur sjabloon'" #actions>
-      <NButton size="large" type="primary">Facturatie Instellingen</NButton>
-    </template>
-  </BaseHeader>
+  <div>
+    <BaseHeader headerIcon="InvoicesIcon" title="Facturen" subTitle="Bekijk alle gegenereerde facturen, wijzig je factuur sjabloon.">
+      <template v-if="selectedTab === 'factuur sjabloon'" #actions>
+        <XyzTransition appear xyz="small-100% origin-center duration-2">
+          <NButton size="large" type="primary">Facturatie Instellingen</NButton>
+        </XyzTransition>
+      </template>
+    </BaseHeader>
 
-  <NTabs class="px-5 bg-gray-50 h-10" type="line" size="medium" @update:value="handleUpdate">
-    <NTabPane name="alle facturen" tab="Alle Facturen">
-      <h1>Invoices</h1>
-    </NTabPane>
-    <NTabPane name="factuur sjabloon" tab="Factuur Sjabloon"></NTabPane>
-  </NTabs>
+    <NTabs class="px-5 bg-gray-50 h-10" type="line" size="medium" @update:value="handleUpdate">
+      <NTabPane name="alle facturen" tab="Alle Facturen">
+        <h1>Invoices</h1>
+      </NTabPane>
+      <NTabPane name="factuur sjabloon" tab="Factuur Sjabloon"></NTabPane>
+    </NTabs>
+  </div>
 </template>
 
 <script>

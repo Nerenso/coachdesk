@@ -1,23 +1,25 @@
 <template>
-  <BaseHeader
-    headerIcon="SessionTypesIcon"
-    title="Sessie Soorten"
-    subTitle="Wijzig, voeg toe of verwijder sessie soorten die je aanbiedt aan jouw klanten."
-  >
-    <template #actions>
-      <NButton @click="showDrawer = true" size="large" type="primary">Soort Toevoegen</NButton>
-    </template>
-  </BaseHeader>
+  <div>
+    <BaseHeader
+      headerIcon="SessionTypesIcon"
+      title="Sessie Soorten"
+      subTitle="Wijzig, voeg toe of verwijder sessie soorten die je aanbiedt aan jouw klanten."
+    >
+      <template #actions>
+        <NButton @click="showDrawer = true" size="large" type="primary">Soort Toevoegen</NButton>
+      </template>
+    </BaseHeader>
 
-  <BaseDrawer
-    :showDrawer="showDrawer"
-    @drawerClosed="showDrawer = false"
-    iconName="SessionTypesIcon"
-    title="Soort Toevoegen"
-    saveButtonText="Voeg Toe"
-    :saveDisabled="false"
-  />
-  <h1>Session Types</h1>
+    <BaseDrawer
+      :showDrawer="showDrawer"
+      @drawerClosed="showDrawer = false"
+      iconName="SessionTypesIcon"
+      title="Soort Toevoegen"
+      saveButtonText="Voeg Toe"
+      :saveDisabled="false"
+    />
+    <h1>Session Types</h1>
+  </div>
 </template>
 
 <script>

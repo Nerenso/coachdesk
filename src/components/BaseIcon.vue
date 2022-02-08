@@ -13,6 +13,7 @@ import {
   Person16Filled as ProfileIcon,
   SignOut24Regular as SignOutIcon,
   CalendarSettings20Regular as SettingsIcon,
+  CheckmarkCircle20Regular as SuccessIcon,
 } from "@vicons/fluent";
 import { ChevronDown } from "@vicons/ionicons5";
 
@@ -28,6 +29,7 @@ export default {
     ChevronDown,
     SignOutIcon,
     SettingsIcon,
+    SuccessIcon,
   },
   props: ["iconName"],
   setup(props) {},
