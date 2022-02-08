@@ -96,7 +96,7 @@ export default {
         if (!err) {
           await authStore.login(formModel.value.user.email, formModel.value.user.password);
           if (!errorMsg.value) {
-            router.push({ name: "Dashboard" });
+            router.push({ name: "Overview" });
           }
         }
       });

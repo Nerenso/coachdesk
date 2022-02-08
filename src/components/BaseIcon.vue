@@ -10,10 +10,25 @@ import {
   FolderPerson20Regular as ClientsIcon,
   Textbox24Regular as FormsIcon,
   ReceiptMoney24Regular as InvoicesIcon,
+  Person16Filled as ProfileIcon,
+  SignOut24Regular as SignOutIcon,
+  CalendarSettings20Regular as SettingsIcon,
 } from "@vicons/fluent";
+import { ChevronDown } from "@vicons/ionicons5";
 
 export default {
-  components: { CalendarIcon, DashboardIcon, SessionTypesIcon, ClientsIcon, FormsIcon, InvoicesIcon },
+  components: {
+    CalendarIcon,
+    DashboardIcon,
+    SessionTypesIcon,
+    ClientsIcon,
+    FormsIcon,
+    InvoicesIcon,
+    ProfileIcon,
+    ChevronDown,
+    SignOutIcon,
+    SettingsIcon,
+  },
   props: ["iconName"],
   setup(props) {},
 };

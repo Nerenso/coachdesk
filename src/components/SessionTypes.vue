@@ -9,26 +9,25 @@
     </template>
   </BaseHeader>
 
-  <NDrawer v-model:show="showDrawer" :width="330">
-    <NDrawerContent closable>
-      <template #header>
-        <div class="flex gap-2 items-center">
-          <BaseIcon class="w-5 h-5 text-brand" iconName="SessionTypesIcon" />
-          <p class="py-2">Soort Toevoegen</p>
-        </div>
-      </template>
-    </NDrawerContent>
-  </NDrawer>
+  <BaseDrawer
+    :showDrawer="showDrawer"
+    @drawerClosed="showDrawer = false"
+    iconName="SessionTypesIcon"
+    title="Soort Toevoegen"
+    saveButtonText="Voeg Toe"
+    :saveDisabled="false"
+  />
   <h1>Session Types</h1>
 </template>
 
 <script>
 import BaseHeader from "./BaseHeader.vue";
 import BaseIcon from "./BaseIcon.vue";
+import BaseDrawer from "./BaseDrawer.vue";
 import { NButton, NDrawer, NDrawerContent } from "naive-ui";
 import { ref } from "vue-demi";
 export default {
-  components: { BaseHeader, NButton, NDrawer, NDrawerContent, BaseIcon },
+  components: { BaseHeader, NButton, NDrawer, NDrawerContent, BaseIcon, BaseDrawer },
   setup() {
     const showDrawer = ref(false);
 

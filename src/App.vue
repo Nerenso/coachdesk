@@ -38,6 +38,9 @@ export default {
       if (authStore.authEventType === "PASSWORD_RECOVERY") {
         router.push({ name: "NewPassword" });
       }
+      if (authStore.authEventType === "SIGNED_OUT") {
+        router.push({ name: "Login" });
+      }
     });
 
     return {
@@ -47,6 +50,9 @@ export default {
           primaryColor: "#FE6078",
           primaryColorHover: "#FD8772",
           primaryColorPressed: "#CB4D60",
+          successColor: "#17D1A1",
+          successColorHover: "#45DAB4",
+          successColorPressed: "#15BC91",
         },
       },
     };
