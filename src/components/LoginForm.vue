@@ -75,7 +75,7 @@ export default {
               }
               return new Error("Voer een geldig e-mail adres in");
             },
-            trigger: ["input", "blur"],
+            trigger: ["blur"],
           },
         ],
         password: [
@@ -87,7 +87,7 @@ export default {
               }
               return true;
             },
-            trigger: ["input", "blur"],
+            trigger: ["blur"],
           },
         ],
       },

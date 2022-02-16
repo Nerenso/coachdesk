@@ -1,5 +1,5 @@
 <template>
-  <NDrawer v-model:show="showDrawer" @update:show="handleClose" :width="330">
+  <NDrawer v-model:show="showDrawer" @update:show="handleClose" :width="338">
     <NDrawerContent closable>
       <template #header>
         <div class="flex gap-2 items-center">
@@ -7,7 +7,9 @@
           <p class="py-2">{{ title }}</p>
         </div>
       </template>
-      Hello
+
+      <slot name="content"></slot>
+
       <template #footer>
         <NButton @click="handleSave" :disabled="saveDisabled" type="success" size="large">{{ saveButtonText }}</NButton>
       </template>

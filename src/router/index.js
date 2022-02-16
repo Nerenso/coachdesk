@@ -15,17 +15,28 @@ const requireAuth = (to, from, next) => {
   }
 };
 
+const redirectToDashboard = (to, from, next) => {
+  const user = supabase.auth.user();
+  if (user) {
+    next({ name: "Overview" });
+  } else {
+    next();
+  }
+};
+
 const routes = [
   {
     path: "/",
     name: "Home",
     component: Home,
+    redirect: { name: "Overview" },
   },
   {
     path: "/auth",
     name: "Auth",
     component: Auth,
     children: [...authRoutes],
+    beforeEnter: redirectToDashboard,
   },
 
   {

@@ -44,6 +44,9 @@ export default {
       }
       if (authStore.authEventType === "SIGNED_OUT") {
         router.push({ name: "Login" });
+        setTimeout(() => {
+          authStore.setAuthEventType(null);
+        }, 5000);
       }
     });
 
