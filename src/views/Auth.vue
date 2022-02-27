@@ -7,7 +7,11 @@
       <div class="w-full xl:w-4/12 p-5 xl:p-16 2xl:px-24">
         <img src="../assets/CoachDeskLogo.svg" class="" />
         <div class="mx-auto h-full flex flex-col justify-center py-32 md:px-32 xl:px-0 max-w-screen-sm pt-10">
-          <router-view></router-view>
+          <router-view v-slot="{ Component }">
+            <XyzTransition appear xyz="fade down-1 duration-3" mode="out-in">
+              <component :is="Component" />
+            </XyzTransition>
+          </router-view>
         </div>
       </div>
     </div>
@@ -18,6 +22,7 @@
 import { useMessage } from "naive-ui";
 
 import { useAuthStore } from "../store/authStore";
+import { useAccountStore } from "../store/userAccountStore";
 
 import { computed, watchEffect } from "vue-demi";
 export default {
@@ -25,14 +30,23 @@ export default {
 
   setup() {
     const authStore = useAuthStore();
+    const accountStore = useAccountStore();
     const message = useMessage();
-    const errorMsg = computed(() => {
+
+    const authErrorMsg = computed(() => {
       return authStore.errorMsg;
     });
 
+    const accountErrorMsg = computed(() => {
+      return accountStore.errorMsg;
+    });
+
     watchEffect(() => {
-      if (errorMsg.value) {
-        message.error(errorMsg.value, { duration: 5000 });
+      if (authErrorMsg.value) {
+        message.error(authErrorMsg.value, { duration: 5000 });
+      }
+      if (accountErrorMsg.value) {
+        message.error(accountErrorMsg.value, { duration: 5000 });
       }
     });
   },

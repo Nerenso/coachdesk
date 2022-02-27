@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
-import { useRouter } from "vue-router";
 import { supabase } from "../supabase/supabase";
+import { useAccountStore } from "./userAccountStore";
 
 export const useAuthStore = defineStore("authStore", {
   state: () => {
@@ -30,8 +30,7 @@ export const useAuthStore = defineStore("authStore", {
 
     async register(email, password) {
       try {
-        const { error } = await supabase.auth.signUp({ email, password });
-
+        const { user, error } = await supabase.auth.signUp({ email, password });
         if (error) throw error;
       } catch (error) {
         this.setError(error.message);

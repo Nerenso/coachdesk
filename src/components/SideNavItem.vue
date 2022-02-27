@@ -2,7 +2,7 @@
   <router-link :to="{ name: pageRoute }">
     <n-tooltip placement="right" trigger="hover">
       <template #trigger>
-        <div class="w-10 h-10 p-2 rounded-md text-gray-400 cursor-pointer hover:bg-red-100 hover:text-brand transition-all duration-300">
+        <div class="w-10 h-10 p-2 rounded-md cursor-pointer hover:bg-red-100 hover:text-brand transition-all duration-300">
           <BaseIcon :iconName="iconToRender" />
         </div>
       </template>

@@ -1,17 +1,19 @@
 <template>
-  <NCard class="" title="Wachtwoord Opnieuw Instellen" size="medium">
-    <NForm ref="formRef" :model="formModel" :rules="rules" size="large">
-      <NFormItem label="Wachtwoord" path="user.password">
-        <NInput class="" size="large" type="password" v-model:value="formModel.user.password" placeholder="Wachtwoord" />
-      </NFormItem>
-      <NFormItem label="Wachtwoord Bevestigen" path="user.confirmPassword">
-        <NInput class="" size="large" type="password" v-model:value="formModel.user.confirmPassword" placeholder="Wachtwoord Bevestigen" />
-      </NFormItem>
-      <div class="flex justify-between items-center">
-        <NButton @click="handleUpdatePassword" :disabled="disableSubmit" class="my-5" type="primary" size="large">Instellen</NButton>
-      </div>
-    </NForm>
-  </NCard>
+  <div>
+    <NCard class="" title="Wachtwoord Opnieuw Instellen" size="medium">
+      <NForm ref="formRef" :model="formModel" :rules="rules" size="large">
+        <NFormItem label="Wachtwoord" path="user.password">
+          <NInput class="" size="large" type="password" v-model:value="formModel.user.password" placeholder="Wachtwoord" />
+        </NFormItem>
+        <NFormItem label="Wachtwoord Bevestigen" path="user.confirmPassword">
+          <NInput class="" size="large" type="password" v-model:value="formModel.user.confirmPassword" placeholder="Wachtwoord Bevestigen" />
+        </NFormItem>
+        <div class="flex justify-between items-center">
+          <NButton @click="handleUpdatePassword" :disabled="disableSubmit" class="my-5" type="primary" size="large">Instellen</NButton>
+        </div>
+      </NForm>
+    </NCard>
+  </div>
 </template>
 
 <script>

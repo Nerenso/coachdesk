@@ -1,7 +1,9 @@
 <template>
-  <BaseHeader headerIcon="DashboardIcon" title="Overzicht" subTitle="In een oogopslag zien wat er gaande is binnen je coachingpraktijk." />
-  <div class="p-5">
-    <h1>Overview</h1>
+  <div>
+    <BaseHeader headerIcon="DashboardIcon" title="Overzicht" subTitle="In een oogopslag zien wat er gaande is binnen je coachingpraktijk." />
+    <div class="p-5">
+      <h1>Overview</h1>
+    </div>
   </div>
 </template>
 

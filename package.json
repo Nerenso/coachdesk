@@ -7,13 +7,15 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^1.29.3",
+    "@animxyz/vue3": "^0.6.6",
+    "@supabase/supabase-js": "^1.30.6",
     "@tailwindcss/postcss7-compat": "^2.2.17",
     "autoprefixer": "^9",
     "core-js": "^3.6.5",
     "pinia": "^2.0.9",
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
+    "uuid": "^8.3.2",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
@@ -24,7 +26,7 @@
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
-    "naive-ui": "^2.24.1",
+    "naive-ui": "^2.25.2",
     "vue-cli-plugin-tailwind": "~2.2.18"
   }
 }

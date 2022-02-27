@@ -1,9 +1,12 @@
 import Overview from "../components/Overview.vue";
 import Calendar from "../components/Calendar.vue";
 import SessionTypes from "../components/SessionTypes.vue";
-import Clients from "../components/Clients.vue";
+import ClientsList from "../components/ClientsList.vue";
+import Clients from "../views/Clients.vue";
 import Forms from "../components/Forms.vue";
 import Invoices from "../components/Invoices.vue";
+import Quotes from "../components/Quotes.vue";
+import ClientDetail from "../components/ClientDetail.vue";
 
 export const dashboardRoutes = [
   {
@@ -29,6 +32,19 @@ export const dashboardRoutes = [
     path: "clients",
     name: "Clients",
     component: Clients,
+    children: [
+      {
+        path: "",
+        name: "Clients List",
+        component: ClientsList,
+      },
+      {
+        path: ":id",
+        name: "Client Detail",
+        component: ClientDetail,
+        props: true,
+      },
+    ],
   },
   {
     path: "forms",
@@ -39,5 +55,10 @@ export const dashboardRoutes = [
     path: "invoices",
     name: "Invoices",
     component: Invoices,
+  },
+  {
+    path: "quotes",
+    name: "Quotes",
+    component: Quotes,
   },
 ];

@@ -2,7 +2,11 @@
   <n-config-provider :theme-overrides="themeOverrides">
     <n-message-provider>
       <div v-if="appReady">
-        <router-view />
+        <router-view v-slot="{ Component }">
+          <XyzTransition appear xyz="fade down-1 duration-3" mode="out-in">
+            <component :is="Component" />
+          </XyzTransition>
+        </router-view>
       </div>
     </n-message-provider>
   </n-config-provider>
@@ -40,6 +44,9 @@ export default {
       }
       if (authStore.authEventType === "SIGNED_OUT") {
         router.push({ name: "Login" });
+        setTimeout(() => {
+          authStore.setAuthEventType(null);
+        }, 5000);
       }
     });
 
@@ -59,3 +66,10 @@ export default {
   },
 };
 </script>
+
+<style>
+html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+</style>

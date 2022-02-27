@@ -1,10 +1,12 @@
 <template>
-  <BaseHeader
-    headerIcon="FormsIcon"
-    title="Formulieren"
-    subTitle="Bekijk, wijzig en creëer formulieren die je naar klanten kunt sturen."
-  ></BaseHeader>
-  <h1>Forms</h1>
+  <div>
+    <BaseHeader
+      headerIcon="FormsIcon"
+      title="Formulieren"
+      subTitle="Bekijk, wijzig en creëer formulieren die je naar klanten kunt sturen."
+    ></BaseHeader>
+    <h1>Forms</h1>
+  </div>
 </template>
 
 <script>

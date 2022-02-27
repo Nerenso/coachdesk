@@ -1,6 +1,6 @@
 <template>
   <div class="bg-gray-50">
-    <div class="p-5 flex justify-between items-center">
+    <div class="p-6 flex justify-between items-center">
       <div class="flex gap-5 items-center">
         <!-- Header Icon -->
         <div class="h-14 w-14 rounded-md bg-white shadow-md hidden md:block">

@@ -1,30 +1,34 @@
 <template>
-  <NCard class="" title="Registreren" size="medium">
-    <NForm ref="formRef" :model="formModel" :rules="rules" size="large">
-      <NFormItem label="Email" path="user.email">
-        <NInput class="" size="large" v-model:value="formModel.user.email" placeholder="john@coachinglife.nl" />
-      </NFormItem>
-      <NFormItem label="Wachtwoord" path="user.password">
-        <NInput class="" size="large" type="password" v-model:value="formModel.user.password" placeholder="Jouw Wachtwoord" />
-      </NFormItem>
-      <NFormItem label="Wachtwoord Bevestigen" path="user.confirmPassword">
-        <NInput class="" size="large" type="password" v-model:value="formModel.user.confirmPassword" placeholder="Jouw Wachtwoord Bevestigen" />
-      </NFormItem>
-      <NButton @click="handleRegister" :disabled="formModel.user.confirmPassword === ''" class="my-5" type="primary" size="large"
-        >Registreren</NButton
-      >
-    </NForm>
-  </NCard>
-  <div class="text-center mt-12">
-    <p>
-      Heb je al een account? <router-link :to="{ name: 'Login' }"><span class="text-red-500 font-bold">Inloggen</span></router-link>
-    </p>
+  <div>
+    <NCard class="" title="Registreren" size="medium">
+      <NForm ref="formRef" :model="formModel" :rules="rules" size="large">
+        <NFormItem label="Email" path="user.email">
+          <NInput class="" size="large" v-model:value="formModel.user.email" placeholder="john@coachinglife.nl" />
+        </NFormItem>
+        <NFormItem label="Wachtwoord" path="user.password">
+          <NInput class="" size="large" type="password" v-model:value="formModel.user.password" placeholder="Jouw Wachtwoord" />
+        </NFormItem>
+        <NFormItem label="Wachtwoord Bevestigen" path="user.confirmPassword">
+          <NInput class="" size="large" type="password" v-model:value="formModel.user.confirmPassword" placeholder="Jouw Wachtwoord Bevestigen" />
+        </NFormItem>
+        <NButton @click="handleRegister" :disabled="formModel.user.confirmPassword === ''" class="my-5" type="primary" size="large"
+          >Registreren</NButton
+        >
+      </NForm>
+    </NCard>
+    <div class="text-center mt-12">
+      <p>
+        Heb je al een account? <router-link :to="{ name: 'Login' }"><span class="text-red-500 font-bold">Inloggen</span></router-link>
+      </p>
+    </div>
   </div>
 </template>
 
 <script>
 import { NCard, NInput, NForm, NFormItem, NButton, useMessage } from "naive-ui";
 import { useAuthStore } from "../store/authStore";
+import { useAccountStore } from "../store/userAccountStore";
+import { useRouter } from "vue-router";
 import { ref } from "@vue/reactivity";
 import { computed, watchEffect } from "vue-demi";
 export default {
@@ -38,17 +42,16 @@ export default {
   },
   setup() {
     const authStore = useAuthStore();
-    const formRef = ref(null);
-    const message = useMessage();
+    const accountStore = useAccountStore();
+    const router = useRouter();
 
-    const errorMsg = computed(() => {
+    const formRef = ref(null);
+
+    const authErrorMsg = computed(() => {
       return authStore.errorMsg;
     });
-
-    watchEffect(() => {
-      if (errorMsg.value) {
-        message.error(errorMsg.value, { duration: 5000 });
-      }
+    const accountErrorMsg = computed(() => {
+      return accountStore.errorMsg;
     });
 
     const formModel = ref({
@@ -102,8 +105,8 @@ export default {
 
     const handleRegister = async () => {
       await authStore.register(formModel.value.user.email, formModel.value.user.password);
-      if (!errorMsg.value) {
-        //
+      if (!authErrorMsg.value && !accountErrorMsg.value) {
+        router.push({ name: "Success" });
       }
     };
 

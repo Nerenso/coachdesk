@@ -1,15 +1,17 @@
 <template>
-  <NCard class="" title="Wachtwoord Resetten" size="medium">
-    <NForm ref="formRef" :model="formModel" :rules="rules" size="large">
-      <NFormItem label="Email" path="user.email">
-        <NInput class="" size="large" v-model:value="formModel.user.email" placeholder="John@coachinglife.nl" />
-      </NFormItem>
-      <div class="flex gap-3">
-        <NButton @click="handleReset" class="my-5" type="primary" size="large">Resetten</NButton>
-        <NButton @click="returnToLogin" class="my-5" strong secondary size="large">Annuleren</NButton>
-      </div>
-    </NForm>
-  </NCard>
+  <div>
+    <NCard class="" title="Wachtwoord Resetten" size="medium">
+      <NForm ref="formRef" :model="formModel" :rules="rules" size="large">
+        <NFormItem label="Email" path="user.email">
+          <NInput class="" size="large" v-model:value="formModel.user.email" placeholder="John@coachinglife.nl" />
+        </NFormItem>
+        <div class="flex gap-3">
+          <NButton @click="handleReset" class="my-5" type="primary" size="large">Resetten</NButton>
+          <NButton @click="returnToLogin" class="my-5" strong secondary size="large">Annuleren</NButton>
+        </div>
+      </NForm>
+    </NCard>
+  </div>
 </template>
 
 <script>
