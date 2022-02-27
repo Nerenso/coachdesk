@@ -1,7 +1,7 @@
 <template>
   <div>
-    <BaseHeader headerIcon="ClientsIcon" title="Klanten" subTitle="Bekijk, wijzig en creëer klant dossiers."></BaseHeader>
-    <h1>Clients</h1>
+    <BaseHeader headerIcon="QuoteIcon" subTitle="Creer en verzend offertes" title="Offertes"> </BaseHeader>
+    <h1>Offertes</h1>
   </div>
 </template>
 

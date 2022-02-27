@@ -28,30 +28,34 @@
 
     <div class="w-full flex flex-grow bg-zinc-300">
       <!-- Side NavBar -->
-      <div class="w-20 hidden md:block pt-20 px-5 transition-all duration-300">
+      <div class="w-20 hidden z-10 md:block pt-20 px-5 transition-all duration-300">
         <nav class="fixed mt-4 flex flex-col gap-7">
-          <SideNavItem pageRoute="Overview" icon="DashboardIcon">
+          <SideNavItem class="text-gray-400" pageRoute="Overview" icon="DashboardIcon">
             <template #pageName>Overzicht</template>
           </SideNavItem>
 
-          <SideNavItem pageRoute="Calendar" icon="CalendarIcon">
+          <SideNavItem class="text-gray-400" pageRoute="Calendar" icon="CalendarIcon">
             <template #pageName> Kalender </template>
           </SideNavItem>
 
-          <SideNavItem pageRoute="Session Types" icon="SessionTypesIcon">
+          <SideNavItem class="text-gray-400" pageRoute="Session Types" icon="SessionTypesIcon">
             <template #pageName> Sessie Soorten </template>
           </SideNavItem>
 
-          <SideNavItem pageRoute="Clients" icon="ClientsIcon">
+          <SideNavItem class="text-gray-400" pageRoute="Clients List" icon="ClientsIcon">
             <template #pageName> Klanten </template>
           </SideNavItem>
 
-          <SideNavItem pageRoute="Forms" icon="FormsIcon">
+          <SideNavItem class="text-gray-400" pageRoute="Forms" icon="FormsIcon">
             <template #pageName> Formulieren </template>
           </SideNavItem>
 
-          <SideNavItem pageRoute="Invoices" icon="InvoicesIcon">
+          <SideNavItem class="text-gray-400" pageRoute="Invoices" icon="InvoicesIcon">
             <template #pageName> Facturen </template>
+          </SideNavItem>
+
+          <SideNavItem class="text-gray-400" pageRoute="Quotes" icon="QuoteIcon">
+            <template #pageName> Offertes </template>
           </SideNavItem>
         </nav>
       </div>

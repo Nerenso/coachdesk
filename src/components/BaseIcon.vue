@@ -15,6 +15,10 @@ import {
   CalendarSettings20Regular as SettingsIcon,
   CheckmarkCircle20Regular as SuccessIcon,
   Checkmark12Filled as CheckBoldIcon,
+  Edit16Filled as EditIcon,
+  Delete24Filled as DeleteIcon,
+  MoreVertical24Regular as MoreIcon,
+  DocumentBulletList20Regular as QuoteIcon,
 } from "@vicons/fluent";
 import { ChevronDown } from "@vicons/ionicons5";
 
@@ -32,6 +36,10 @@ export default {
     SettingsIcon,
     SuccessIcon,
     CheckBoldIcon,
+    EditIcon,
+    DeleteIcon,
+    MoreIcon,
+    QuoteIcon,
   },
   props: ["iconName"],
   setup(props) {},

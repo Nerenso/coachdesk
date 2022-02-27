@@ -51,7 +51,8 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-  linkActiveClass: "bg-red-100 rounded-md opacity-100",
+  linkActiveClass: "bg-red-100 text-brand rounded-md opacity-100",
+  // linkExactActiveClass: "bg-red-100 text-brand rounded-md opacity-100",
 });
 
 export default router;

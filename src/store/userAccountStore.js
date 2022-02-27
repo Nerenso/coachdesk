@@ -11,16 +11,6 @@ export const useAccountStore = defineStore("accountStore", {
   actions: {
     setUserAccount() {},
 
-    async createUserAccount(user) {
-      console.log(user.id);
-      try {
-        const { error } = await supabase.from("userAccount").insert([{ id: user.id }]);
-        if (error) throw error;
-      } catch (error) {
-        this.setError(error.message);
-      }
-    },
-
     setError(message) {
       this.errorMsg = message;
       setTimeout(() => {

@@ -1,5 +1,5 @@
 <template>
-  <NDrawer v-model:show="showDrawer" @update:show="handleClose" :width="338">
+  <NDrawer :auto-focus="false" v-model:show="showDrawer" @update:show="handleClose" :width="338">
     <NDrawerContent closable>
       <template #header>
         <div class="flex gap-2 items-center">
@@ -11,7 +11,10 @@
       <slot name="content"></slot>
 
       <template #footer>
-        <NButton @click="handleSave" :disabled="saveDisabled" type="success" size="large">{{ saveButtonText }}</NButton>
+        <div class="flex gap-4">
+          <NButton size="large" ghost type="error" v-if="deleteButtonText">{{ deleteButtonText }}</NButton>
+          <NButton @click="handleSave" :disabled="saveDisabled" type="success" size="large">{{ saveButtonText }}</NButton>
+        </div>
       </template>
     </NDrawerContent>
   </NDrawer>
@@ -21,7 +24,7 @@
 import { NDrawer, NDrawerContent, NButton } from "naive-ui";
 import BaseIcon from "./BaseIcon.vue";
 export default {
-  props: ["showDrawer", "title", "iconName", "saveButtonText", "saveDisabled"],
+  props: ["showDrawer", "title", "iconName", "saveButtonText", "saveDisabled", "deleteButtonText"],
   components: { NDrawer, NDrawerContent, BaseIcon, NButton },
   setup(props, context) {
     const handleClose = () => {

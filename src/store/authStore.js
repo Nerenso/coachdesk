@@ -29,10 +29,8 @@ export const useAuthStore = defineStore("authStore", {
     },
 
     async register(email, password) {
-      const accountStore = useAccountStore();
       try {
         const { user, error } = await supabase.auth.signUp({ email, password });
-        accountStore.createUserAccount(user);
         if (error) throw error;
       } catch (error) {
         this.setError(error.message);
